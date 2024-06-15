@@ -19,7 +19,7 @@ public class VehicleDao {
 
         try(Connection connection = dataSource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "insert into vehicles (VIN, make, model, year, SOLD, color, vehicleType, odometer, price) values (?,?,?,?,?,?,?,?,?)")){
+                    "INSERT into vehicles (VIN, make, model, year, SOLD, color, vehicleType, odometer, price) values (?,?,?,?,?,?,?,?,?)")){
             preparedStatement.setString(1, vehicle.getVin());
             preparedStatement.setString(2, vehicle.getMake());
             preparedStatement.setString(3, vehicle.getModel());
@@ -33,7 +33,7 @@ public class VehicleDao {
 
             int rows = preparedStatement.executeUpdate();
 
-            System.out.println("Rows inserted: " + rows);
+            System.out.println("Rows inserted to vehicles: " + rows);
         }
         catch (Exception ex){
             ex.printStackTrace();
@@ -50,7 +50,7 @@ public class VehicleDao {
             preparedStatement.setString(1, VIN);
 
             int rows = preparedStatement.executeUpdate();
-            System.out.println("Rows deleted: " + rows);
+            System.out.println("Rows deleted from vehicles: " + rows);
 
         } catch (Exception ex){
             ex.printStackTrace();
@@ -64,7 +64,7 @@ public class VehicleDao {
 
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                     "SELECT * FROM Vehicle WHERE price BETWEEN ? AND ?")) {
+                     "SELECT * FROM Vehicles WHERE price BETWEEN ? AND ?")) {
             statement.setDouble(1, minPrice);
             statement.setDouble(2, maxPrice);
 
@@ -100,7 +100,7 @@ public class VehicleDao {
 
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                     "SELECT * FROM Vehicle WHERE make = ? AND model = ?")) {
+                     "SELECT * FROM Vehicles WHERE make = ? AND model = ?")) {
             statement.setString(1, make);
             statement.setString(2, model);
 
@@ -124,7 +124,7 @@ public class VehicleDao {
 
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                     "SELECT * FROM Vehicle WHERE year BETWEEN ? AND ?")) {
+                     "SELECT * FROM Vehicles WHERE year BETWEEN ? AND ?")) {
             statement.setDouble(1, minYear);
             statement.setDouble(2, maxYear);
 
@@ -148,7 +148,7 @@ public class VehicleDao {
 
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                     "SELECT * FROM Vehicle WHERE color = ?")) {
+                     "SELECT * FROM Vehicles WHERE color = ?")) {
             statement.setString(1, color);
 
 
@@ -171,7 +171,7 @@ public class VehicleDao {
 
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                     "SELECT * FROM Vehicle WHERE odometer BETWEEN ? AND ?")) {
+                     "SELECT * FROM Vehicles WHERE odometer BETWEEN ? AND ?")) {
             statement.setDouble(1, minMileage);
             statement.setDouble(2, maxMileage);
 
@@ -195,7 +195,7 @@ public class VehicleDao {
 
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                     "SELECT * FROM Vehicle WHERE vehicleType = ?")) {
+                     "SELECT * FROM Vehicles WHERE vehicleType = ?")) {
             statement.setString(1, type);
 
 

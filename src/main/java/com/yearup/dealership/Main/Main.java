@@ -248,9 +248,16 @@ public class Main {
         if (vehicles.isEmpty()) {
             System.out.println("No vehicles found.");
         } else {
-            System.out.println("\nSearch Results:");
+
+            System.out.printf("%-20s %-15s %-15s %-6s %-6s %-10s %-15s %-10s %-10s%n",
+                    "VIN", "Make", "Model", "Year", "Sold", "Color", "Vehicle Type", "Odometer", "Price");
+            System.out.println("----------------------------------------------------------------------------------------------------------------");
+
             for (Vehicle vehicle : vehicles) {
-                System.out.println(vehicle);
+                System.out.printf("%-20s %-15s %-15s %-6d %-6b %-10s %-15s %-10d $%-10.2f%n",
+                        vehicle.getVin(), vehicle.getMake(), vehicle.getModel(), vehicle.getYear(),
+                        vehicle.isSold(), vehicle.getColor(), vehicle.getVehicleType(),
+                        vehicle.getOdometer(), vehicle.getPrice());
             }
         }
     }
